@@ -1,7 +1,7 @@
 # Bashicu_Matrix
 バシク行列を計算するC++プログラムです。BMS.hpp, BMS.txt, athena_array.hppをBMS.cppと同じディレクトリに入れた上で、ターミナルでBMS.cppをコンパイルしてください。<br>
 
-使い方
+使い方<br>
 1)BMS.txtにバシク行列を行列形式で入力してください。例えば<br>
 0,1,2<br>
 0,1,1<br>
