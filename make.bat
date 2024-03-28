@@ -1,0 +1,1 @@
+g++ BMS.cpp -o BMS.exe -std=c++11 -O2
