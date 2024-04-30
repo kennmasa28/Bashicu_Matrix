@@ -335,9 +335,10 @@ int Matrix::ColumnOfParent(AthenaArray<int> &s, int x, int y){
 }
 
 int Matrix::IsColumnOfDirectAncestor(AthenaArray<int> &s, int column, int x, int y){
-  //Judge "is column r direct ancestor of s(line=x, column=y)?" 
+  //Judge "is column r direct ancestor of s(line=x, column=y)?"
+
   int j=y;
-  while(j>0){
+  while(j>=0){
     if(column==j) return 1;
     if(column==ColumnOfParent(s, x, j)) return 1;
     j = ColumnOfParent(s, x, j);
@@ -365,6 +366,7 @@ void Matrix::DecideDelta(AthenaArray<int> &Delta, AthenaArray<int> &s, int nline
 void Matrix::DecideA(AthenaArray<int> &A, AthenaArray<int> &s, int nline, int ncolumn, int t, int r){
   for (int i=0; i<nline; i++){
     for (int j=0; j<ncolumn - r - 1; j++){
+      std::cout << "r=" << r << "| IsCD=" << IsColumnOfDirectAncestor(s, r, i, j+r)<< "\n";
       if (IsColumnOfDirectAncestor(s, r, i, j+r)) A(i,j) = 1;
       if (!IsColumnOfDirectAncestor(s, r, i, j+r)) A(i,j) = 0;
     }
