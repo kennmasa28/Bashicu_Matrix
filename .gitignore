@@ -1,2 +1,3 @@
-BMS.txt
-BMS.exe
+*.txt
+*.exe
+run.py

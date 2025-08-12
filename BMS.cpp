@@ -124,8 +124,10 @@ int main(int argc, char *argv[]) {
       int t = pm->NonZeroLowLine(s,nline,ncolumn);
       int r = pm->DecideBadRoot(s,t,ncolumn);
       if (r==-1){
-        std::cout << "Error: Bad root is not found...\n";
-        return(0);
+        std::cout << "Bad root is not found. Finished.\n";
+        ncolumn = 0;
+        n = pm->ActivateFunction(n, func_flag);
+        break;
       }
       g.NewAthenaArray(nline,r);
       pm->DecideGoodPart(g, s, r, nline);
@@ -366,7 +368,7 @@ void Matrix::DecideDelta(AthenaArray<int> &Delta, AthenaArray<int> &s, int nline
 void Matrix::DecideA(AthenaArray<int> &A, AthenaArray<int> &s, int nline, int ncolumn, int t, int r){
   for (int i=0; i<nline; i++){
     for (int j=0; j<ncolumn - r - 1; j++){
-      std::cout << "r=" << r << "| IsCD=" << IsColumnOfDirectAncestor(s, r, i, j+r)<< "\n";
+      // std::cout << "r=" << r << "| IsCD=" << IsColumnOfDirectAncestor(s, r, i, j+r)<< "\n";
       if (IsColumnOfDirectAncestor(s, r, i, j+r)) A(i,j) = 1;
       if (!IsColumnOfDirectAncestor(s, r, i, j+r)) A(i,j) = 0;
     }
